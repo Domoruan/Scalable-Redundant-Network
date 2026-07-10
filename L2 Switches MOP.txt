@@ -1,0 +1,53 @@
+----------------------------
+##L2 Switches Configuration
+----------------------------
+
+-----------------
+All L2 Switches
+----------------
+en
+conf t 
+vlan 10
+name Marketing
+
+vlan 20
+name Finanace 
+
+vlan 30 
+name PeopleOps
+
+vlan 40
+name Execs
+
+vlan 50
+name DHCP-Server
+exit
+
+----------------------------------------------------------------------------
+##L2 Switches (Configured to appropriate vlans (10-50) for int range f0/1-3
+----------------------------------------------------------------------------
+en
+conf t
+int range f0/1-3
+switchport mode access
+switchport access vlan 10
+spanning-tree portfast
+
+
+---------------------------
+##DHCP Server - VLAN 50
+---------------------------
+switchport mode accesss
+switchport access vlan 50
+
+
+--------------------------------
+##L2 trunk (for all L2 switches)
+--------------------------------
+en
+conf t
+int range g0/1-2
+switchport mode trunk
+switchport trunk allowed vlan 10,20,30,40,50
+no shutdown 
+

@@ -1,0 +1,28 @@
+Redundant network with LACP between L3 switches confirmed operational and also redundant L2 links connecting to both switches. 
+ALso using STP portfast for access ports. STP is automatically blocking loops from L2 to L3 switch. 
+
+
+---------------------
+IP Address Scheme
+---------------------
+
+192.168.x.0/24 = SVI's
+10.0.x.0/30 = point-to-point routed uplinks
+203.0.100.x/30 = ISP/upstream links
+
+SVI's
+Int vlan 10 - 192.168.10.20
+Int vlan 20 - 192.168.20.20
+Int vlan 30 - 192.168.30.20
+Int vlan 40 - 192.168.40.20
+Int vlan 50 - 192.168.500.20
+
+Point to Point (L3 > Router 0 and 1) 
+10.0.1.0/30 - 10.0.4.0/30 networks
+
+
+ISP/upstream
+Int g0/0 (203.0.100.0/30) and Int g0/1 (203.0.100.4/30)
+
+
+
